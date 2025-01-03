@@ -24,6 +24,8 @@ public class Guardian {
     @Column(nullable = false)
     private String relation;
 
+    private String guardianAddress;
+
     @ElementCollection
     @CollectionTable(name = "guardian_mobile_numbers", joinColumns = @JoinColumn(name = "guardian_id"))
     @Column(name = "mobile_number")
@@ -31,21 +33,19 @@ public class Guardian {
 
     //relationship mapping
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", nullable = false)
-    private GuardianAddress guardianAddress;
-
     @OneToMany(mappedBy = "guardian", cascade = CascadeType.ALL)
     private List<Student> students;
 
     public Guardian() {}
 
-    public Guardian(Long id, String name, String fiscalCode, String relation, List<String> mobileNumber, GuardianAddress guardianAddress) {
+    public Guardian(Long id, String name, String fiscalCode, String relation, List<String> mobileNumber, String guardianAddress, List<Student> students) {
         this.id = id;
         this.name = name;
         this.fiscalCode = fiscalCode;
         this.relation = relation;
         this.mobileNumber = mobileNumber;
         this.guardianAddress = guardianAddress;
+        this.students = students;
     }
 }
+
