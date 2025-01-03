@@ -29,6 +29,8 @@ public class Guardian {
     @Column(name = "mobile_number")
     private List<String> mobileNumber;
 
+    //relationship mapping
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", nullable = false)
     private GuardianAddress guardianAddress;

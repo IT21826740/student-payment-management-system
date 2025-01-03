@@ -19,6 +19,9 @@ public class GuardianAddress {
     @Column(name = "city", nullable = false)
     private String city;
 
+    @Column(nullable = false)
+    private String country;
+
     @Column(name = "zip_code", nullable = false)
     private String zipCode;
 
@@ -27,10 +30,11 @@ public class GuardianAddress {
 
     public GuardianAddress() {}
 
-    public GuardianAddress(Long id, String street, String city, String zipCode) {
+    public GuardianAddress(Long id, String street, String city, String country, String zipCode) {
         this.id = id;
         this.street = street;
         this.city = city;
+        this.country = country;
         this.zipCode = zipCode;
     }
 }
