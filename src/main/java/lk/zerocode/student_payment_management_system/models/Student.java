@@ -71,9 +71,13 @@ public class Student {
     @JoinColumn(name = "guardian_id", referencedColumnName = "guardian_id", nullable = false)
     private Guardian guardian;
 
+    // One-to-One relationship with Balance
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Balance balance;
+
     public Student() {}
 
-    public Student(Long id, String fiscalCode, String name, LocalDate birthday, Gender gender, String country, String specialNeeds, List<String> mobileNumber, String email, String address, PaymentPlans paymentPlan, List<Referral> referrals, Guardian guardian) {
+    public Student(Long id, String fiscalCode, String name, LocalDate birthday, Gender gender, String country, String specialNeeds, List<String> mobileNumber, String email, String address, PaymentPlans paymentPlan, List<Referral> referrals, Guardian guardian, Balance balance) {
         this.id = id;
         this.fiscalCode = fiscalCode;
         this.name = name;
@@ -87,5 +91,6 @@ public class Student {
         this.paymentPlan = paymentPlan;
         this.referrals = referrals;
         this.guardian = guardian;
+        this.balance = balance;
     }
 }

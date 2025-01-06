@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,7 +19,11 @@ public class PaymentPlans {
     @Column(nullable = false)
     private String amount;
 
+    @ElementCollection
     private List<String> requirements;
+
+    @ManyToMany(mappedBy = "paymentPlans") // Referencing the field in Fee
+    private List<Fee> fees;
 
     public PaymentPlans() {
     }
