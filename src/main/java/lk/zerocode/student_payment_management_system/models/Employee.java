@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @Table(name = "employees")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,16 +30,5 @@ public class Employee {
     @Column(name = "job_role", nullable = false)
     private String jobRole;
 
-    public Employee() {
-    }
 
-    public Employee(Long id, String name, String fiscalCode, String mobileNumber, String email, String address, String jobRole) {
-        this.id = id;
-        this.name = name;
-        this.fiscalCode = fiscalCode;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.address = address;
-        this.jobRole = jobRole;
-    }
 }

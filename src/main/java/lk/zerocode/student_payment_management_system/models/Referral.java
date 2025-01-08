@@ -29,4 +29,5 @@ public class Referral {
 
     @Column(name = "relation_or_not")
     private Relation relation;
+
 }

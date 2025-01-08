@@ -21,13 +21,4 @@ public class Balance {
     @JoinColumn(name = "student_id", referencedColumnName = "student_id", nullable = false)
     private Student student;
 
-    public Balance() {
-    }
-
-    public Balance(Long id, Float credit, String type, Student student) {
-        this.id = id;
-        this.credit = credit;
-        this.type = type;
-        this.student = student;
-    }
 }

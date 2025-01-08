@@ -22,16 +22,14 @@ public class PaymentPlans {
     @ElementCollection
     private List<String> requirements;
 
+    // Many-to-Many relationship with fee
     @ManyToMany(mappedBy = "paymentPlans") // Referencing the field in Fee
     private List<Fee> fees;
 
-    public PaymentPlans() {
-    }
+    // Many-to-One relationship with Intake
+    @ManyToOne
+    @JoinColumn(name = "intake_id", nullable = false)
+    private Intake intake;
 
-    public PaymentPlans(Long id, String title, String amount, List<String> requirements) {
-        this.id = id;
-        this.title = title;
-        this.amount = amount;
-        this.requirements = requirements;
-    }
+
 }

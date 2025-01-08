@@ -19,15 +19,11 @@ public class DiscountPlans {
     @Column(nullable = false)
     private float percentage;
 
+    @ManyToOne
+    @JoinColumn(name = "intake_id", nullable = false)
+    private Intake intake;
+
     private List<String> requirement;
 
-    public DiscountPlans() {
-    }
 
-    public DiscountPlans(Long id, String title, float percentage, List<String> requirement) {
-        this.id = id;
-        this.title = title;
-        this.percentage = percentage;
-        this.requirement = requirement;
-    }
 }

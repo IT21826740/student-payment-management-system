@@ -75,22 +75,19 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private Balance balance;
 
-    public Student() {}
+    // Many-to-Many relationship with Intake
+    @ManyToMany
+    @JoinTable(
+            name = "student_intake",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "intake_id")
+    )
+    private List<Intake> intakes ;
 
-    public Student(Long id, String fiscalCode, String name, LocalDate birthday, Gender gender, String country, String specialNeeds, List<String> mobileNumber, String email, String address, PaymentPlans paymentPlan, List<Referral> referrals, Guardian guardian, Balance balance) {
-        this.id = id;
-        this.fiscalCode = fiscalCode;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.country = country;
-        this.specialNeeds = specialNeeds;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.address = address;
-        this.paymentPlan = paymentPlan;
-        this.referrals = referrals;
-        this.guardian = guardian;
-        this.balance = balance;
-    }
+    @OneToMany(mappedBy = "student")
+    private List<Attendance> attendance;
+
+    @OneToMany(mappedBy = "student")
+    private List<FreeAccess> freeAccess ;
+
 }
